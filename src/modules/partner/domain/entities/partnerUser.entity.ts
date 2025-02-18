@@ -16,6 +16,6 @@ export class PartnerUser {
   @Column({ type: 'enum', enum: Role, default: Role.pAdmin })
   role: Role;
 
-  @ManyToOne(() => Partner, partner => partner.users)
+  @ManyToOne(() => Partner, (partner) => partner.users)
   partner_: Partner;
 }

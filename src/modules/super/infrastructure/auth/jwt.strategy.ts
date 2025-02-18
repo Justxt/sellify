@@ -9,14 +9,18 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
-      secretOrKey: process.env.JWT_SECRET || (() => { throw new Error('JWT_SECRET is not defined'); })(),
+      secretOrKey:
+        process.env.JWT_SECRET ||
+        (() => {
+          throw new Error('JWT_SECRET is not defined');
+        })(),
     });
   }
 
   async validate(payload: any) {
     return {
       userId: payload.sub,
-      username: payload.username, 
+      username: payload.username,
       role: payload.role,
     };
   }

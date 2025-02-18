@@ -5,10 +5,10 @@ export class sAdminDTO {
   @IsNotEmpty()
   @IsString()
   username: string;
-  
+
   @IsNotEmpty()
   password: string;
-   
+
   @IsEnum(Role)
   role: Role;
 }

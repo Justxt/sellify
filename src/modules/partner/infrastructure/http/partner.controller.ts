@@ -7,11 +7,11 @@ import { Roles } from '../../../super/infrastructure/auth/roles.decorator';
 import { Role } from '../../../super/domain/enums/sRole.enum';
 
 @Controller('partner')
-@UseGuards(JwtAuthGuard, RolesGuard)
 export class PartnerController {
   constructor(private readonly partnerService: PartnerService) {}
 
   @Post('registerPartner')
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(Role.sAdmin)
   async register(@Body() partnerDto: PartnerDTO) {
     return this.partnerService.register(partnerDto);

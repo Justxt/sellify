@@ -5,14 +5,14 @@ export class PartnerDTO {
   @IsNotEmpty()
   @IsString()
   username: string;
-  
+
   @IsNotEmpty()
   password: string;
 
   @IsNotEmpty()
   @IsString()
   partnerName: string;
-   
+
   @IsEnum(Role)
   role: Role;
 }

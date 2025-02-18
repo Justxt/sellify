@@ -3,5 +3,8 @@ import { sAdminDTO } from '../dto/sAdmin.dto';
 
 export interface IAuthService {
   sAdminRegister(sAdminRegisterDto: sAdminDTO): Promise<sAdmin>;
-  sAdminLogin(username: string, password: string): Promise<{ access_token: string }>;
+  sAdminLogin(
+    username: string,
+    password: string,
+  ): Promise<{ access_token: string }>;
 }

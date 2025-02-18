@@ -9,6 +9,6 @@ export class Partner {
   @Column({ unique: true })
   name: string;
 
-  @OneToMany(() => PartnerUser, partnerUser => partnerUser.partner_)
+  @OneToMany(() => PartnerUser, (partnerUser) => partnerUser.partner_)
   users: PartnerUser[];
 }
