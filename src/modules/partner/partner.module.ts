@@ -6,6 +6,8 @@ import { PartnerUser } from './domain/entities/partnerUser.entity';
 import { PartnerController } from './infrastructure/http/partner.controller';
 import { PartnerService } from './application/services/partner.service';
 import { Partner } from './domain/entities/partner.entity';
+import { PartnerRepository } from './infrastructure/repositories/partner.repository';
+import { PartnerUserRepository } from './infrastructure/repositories/partnerUser.repository';
 
 @Module({
   imports: [
@@ -13,7 +15,11 @@ import { Partner } from './domain/entities/partner.entity';
     JwtModule.register(jwtConfig),
   ],
   controllers: [PartnerController],
-  providers: [PartnerService],
+  providers: [
+    PartnerService,
+    { provide: 'IPartnerRepository', useClass: PartnerRepository },
+    { provide: 'IPartnerUserRepository', useClass: PartnerUserRepository },
+  ],
   exports: [PartnerService],
 })
 export class PartnerModule {}
