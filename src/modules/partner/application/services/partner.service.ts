@@ -47,6 +47,7 @@ export class PartnerService implements IPartnerService {
     if (!partner_) {
       partner_ = new Partner();
       partner_.name = partnerDto.partnerName;
+      partner_.businessType = partnerDto.businessType;
       await this.partnerRepository.save(partner_);
     }
 

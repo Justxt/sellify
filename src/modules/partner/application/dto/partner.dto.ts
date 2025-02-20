@@ -1,5 +1,6 @@
 import { IsNotEmpty, IsEnum, IsString } from 'class-validator';
-import { Role } from '../../../super/domain/enums/sRole.enum';
+import { BusinessType } from '../../domain/enums/business-type.enum';
+import { Role } from 'src/modules/super/domain/enums/sRole.enum';
 
 export class PartnerDTO {
   @IsNotEmpty()
@@ -12,6 +13,10 @@ export class PartnerDTO {
   @IsNotEmpty()
   @IsString()
   partnerName: string;
+
+  @IsNotEmpty()
+  @IsEnum(BusinessType)
+  businessType: BusinessType;
 
   @IsEnum(Role)
   role: Role;
