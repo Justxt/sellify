@@ -9,11 +9,12 @@ import {
 import { PartnerUser } from './partnerUser.entity';
 import { Franchise } from '../../../franchise/domain/entities/franchise.entity';
 import { BusinessType } from '../enums/business-type.enum';
+import { UUID } from 'crypto';
 
 @Entity()
 export class Partner {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id: UUID;
 
   @Column({ unique: true })
   name: string;

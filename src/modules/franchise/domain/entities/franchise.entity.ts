@@ -7,11 +7,12 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { Partner } from '../../../partner/domain/entities/partner.entity';
+import { UUID } from 'crypto';
 
 @Entity()
 export class Franchise {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id: UUID;
 
   @Column({ unique: true })
   name: string;

@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { FindOptionsWhere } from 'typeorm';
 import { Partner } from '../../domain/entities/partner.entity';
 import { IPartnerRepository } from '../../application/interfaces/ipartner.repository';
 
@@ -18,8 +19,9 @@ export class PartnerRepository implements IPartnerRepository {
   }
 
   findById(id: string): Promise<Partner | undefined> {
+    const where: FindOptionsWhere<Partner> = { id: id as any };
     return this.repository
-      .findOne({ where: { id } })
+      .findOne({ where })
       .then((result) => result ?? undefined);
   }
 

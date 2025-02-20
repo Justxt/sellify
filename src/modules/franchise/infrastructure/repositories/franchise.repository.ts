@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { FindOptionsWhere } from 'typeorm';
 import { Franchise } from '../../domain/entities/franchise.entity';
 import { IFranchiseRepository } from '../../domain/interfaces/ifranchise.repository';
 
@@ -25,17 +26,21 @@ export class FranchiseRepository implements IFranchiseRepository {
   }
 
   async findById(id: string): Promise<Franchise | undefined> {
+    const where: FindOptionsWhere<Franchise> = { id: id as any };
     return this.repository
       .findOne({
-        where: { id },
+        where,
         relations: ['partner'],
       })
       .then((result) => result ?? undefined);
   }
 
   async findByPartnerId(partnerId: string): Promise<Franchise[]> {
+    const where: FindOptionsWhere<Franchise> = {
+      partner: { id: partnerId as any },
+    };
     return this.repository.find({
-      where: { partner: { id: partnerId } },
+      where,
       relations: ['partner'],
     });
   }
