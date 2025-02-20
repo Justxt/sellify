@@ -3,8 +3,8 @@ import { PartnerService } from '../../application/services/partner.service';
 import { PartnerDTO } from '../../application/dto/partner.dto';
 import { JwtAuthGuard } from '../../../super/infrastructure/guards/jwt-auth.guard';
 import { RolesGuard } from '../../../super/infrastructure/guards/roles.guard';
-import { Roles } from '../../../super/infrastructure/security/roles.decorator';
 import { Role } from '../../../super/domain/enums/sRole.enum';
+import { Roles } from 'src/modules/super/infrastructure/decorators/roles.decorator';
 
 @Controller('partner')
 export class PartnerController {
@@ -12,7 +12,7 @@ export class PartnerController {
 
   @Post('registerPartner')
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(Role.sAdmin)
+  @Roles(Role.pAdmin, Role.sAdmin)
   async register(@Body() partnerDto: PartnerDTO) {
     return this.partnerService.register(partnerDto);
   }

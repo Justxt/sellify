@@ -19,7 +19,7 @@ export class Partner {
   name: string;
 
   @OneToMany(() => PartnerUser, (partnerUser) => partnerUser.partner_)
-  users: PartnerUser[];
+  employees: PartnerUser[];
 
   @OneToMany(() => Franchise, (franchise) => franchise.partner)
   franchises: Franchise[];

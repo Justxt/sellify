@@ -1,5 +1,4 @@
-import { IsEnum, IsNotEmpty, IsString } from 'class-validator';
-import { BusinessType } from 'src/modules/partner/domain/enums/business-type.enum';
+import { IsNotEmpty, IsString } from 'class-validator';
 
 export class CreateFranchiseDto {
   @IsNotEmpty()

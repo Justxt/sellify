@@ -23,7 +23,7 @@ export class PartnerUser {
   @Column({ type: 'enum', enum: Role, default: Role.pAdmin })
   role: Role;
 
-  @ManyToOne(() => Partner, (partner) => partner.users)
+  @ManyToOne(() => Partner, (partner) => partner.employees)
   partner_: Partner;
 
   @CreateDateColumn()
