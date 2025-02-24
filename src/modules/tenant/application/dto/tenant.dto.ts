@@ -1,1 +1,0 @@
-// DTO para crear/editar tenants

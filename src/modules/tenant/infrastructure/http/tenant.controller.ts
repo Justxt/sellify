@@ -1,1 +1,0 @@
-// Controlador para exponer endpoints de tenants

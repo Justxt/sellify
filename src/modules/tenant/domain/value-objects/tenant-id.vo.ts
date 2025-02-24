@@ -1,1 +1,0 @@
-// Objeto de valor para encapsular el identificador del tenant

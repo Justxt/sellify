@@ -1,1 +1,0 @@
-// Entidad del tenant (con su tenantId, nombre, configuración, etc.)
