@@ -19,7 +19,7 @@ export class PartnerRepository implements IPartnerRepository {
   }
 
   findById(id: string): Promise<Partner | undefined> {
-    const where: FindOptionsWhere<Partner> = { id: id as any };
+    const where: FindOptionsWhere<Partner> = { id: id as string };
     return this.repository
       .findOne({ where })
       .then((result) => result ?? undefined);

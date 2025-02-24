@@ -6,12 +6,11 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { Role } from '../enums/sRole.enum';
-import { UUID } from 'crypto';
 
 @Entity()
 export class sAdmin {
   @PrimaryGeneratedColumn('uuid')
-  id: UUID;
+  id: string;
 
   @Column({ unique: true })
   username: string;

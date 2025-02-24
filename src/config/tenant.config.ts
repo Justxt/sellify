@@ -1,0 +1,1 @@
+//Configuración y parámetros globales para la gestión del tenant (por ejemplo, políticas de aislamiento)

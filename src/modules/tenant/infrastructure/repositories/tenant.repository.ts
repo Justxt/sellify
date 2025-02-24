@@ -1,0 +1,1 @@
+// Implementación concreta del repositorio de tenants

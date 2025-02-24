@@ -24,6 +24,6 @@ import { FranchiseRepository } from './infrastructure/repositories/franchise.rep
       useClass: PartnerRepository,
     },
   ],
-  exports: ['IFranchiseService'],
+  exports: ['IFranchiseService', 'IFranchiseRepository'],
 })
 export class FranchiseModule {}

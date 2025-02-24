@@ -8,12 +8,11 @@ import {
 } from 'typeorm';
 import { Partner } from './partner.entity';
 import { Role } from 'src/modules/super/domain/enums/sRole.enum';
-import { UUID } from 'crypto';
 
 @Entity()
 export class PartnerUser {
   @PrimaryGeneratedColumn('uuid')
-  id: UUID;
+  id: string;
 
   @Column({ unique: true })
   username: string;

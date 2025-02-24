@@ -17,6 +17,12 @@ export class PartnerUserRepository implements IPartnerUserRepository {
       .then((result) => result ?? undefined);
   }
 
+  findById(id: string): Promise<PartnerUser | undefined> {
+    return this.repository
+      .findOne({ where: { id } })
+      .then((result) => result ?? undefined);
+  }
+
   save(partnerUser: PartnerUser): Promise<PartnerUser> {
     return this.repository.save(partnerUser);
   }

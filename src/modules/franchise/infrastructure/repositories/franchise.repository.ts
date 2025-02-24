@@ -17,31 +17,26 @@ export class FranchiseRepository implements IFranchiseRepository {
   }
 
   async findByName(name: string): Promise<Franchise | undefined> {
-    return this.repository
-      .findOne({
-        where: { name },
-        relations: ['partner'],
-      })
-      .then((result) => result ?? undefined);
+    const franchise = await this.repository.findOne({ where: { name } });
+    return franchise ?? undefined;
   }
 
-  async findById(id: string): Promise<Franchise | undefined> {
-    const where: FindOptionsWhere<Franchise> = { id: id as any };
-    return this.repository
-      .findOne({
-        where,
-        relations: ['partner'],
-      })
-      .then((result) => result ?? undefined);
+  async findById(
+    id: string,
+    relations: string[] = [],
+  ): Promise<Franchise | undefined> {
+    // Siempre incluir la relación con partner
+    const allRelations = [...new Set([...relations, 'partner'])];
+    const franchise = await this.repository.findOne({
+      where: { id },
+      relations: allRelations,
+    });
+    return franchise ?? undefined;
   }
 
   async findByPartnerId(partnerId: string): Promise<Franchise[]> {
-    const where: FindOptionsWhere<Franchise> = {
-      partner: { id: partnerId as any },
-    };
     return this.repository.find({
-      where,
-      relations: ['partner'],
+      where: { partner: { id: partnerId } },
     });
   }
 

@@ -2,17 +2,19 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { Partner } from '../../../partner/domain/entities/partner.entity';
-import { UUID } from 'crypto';
+import { Staff } from 'src/modules/staff/domain/entities/staff.entity';
 
 @Entity()
 export class Franchise {
   @PrimaryGeneratedColumn('uuid')
-  id: UUID;
+  id: string;
 
   @Column({ unique: true })
   name: string;
@@ -27,5 +29,9 @@ export class Franchise {
   updatedAt: Date;
 
   @ManyToOne(() => Partner, (partner) => partner.franchises)
+  @JoinColumn({ name: 'partnerId' })
   partner: Partner;
+
+  @OneToMany(() => Staff, (staff) => staff.partner_)
+  staff: Staff[];
 }

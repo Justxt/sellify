@@ -20,6 +20,6 @@ import { PartnerUserRepository } from './infrastructure/repositories/partnerUser
     { provide: 'IPartnerRepository', useClass: PartnerRepository },
     { provide: 'IPartnerUserRepository', useClass: PartnerUserRepository },
   ],
-  exports: [PartnerService],
+  exports: ['IPartnerRepository', PartnerService],
 })
 export class PartnerModule {}
